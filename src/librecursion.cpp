@@ -26,3 +26,25 @@
 // assignments, including giving a name, short description, and
 // documenting parameters and return value using @param and @returns
 // tags respectively.
+
+/** @brief Sum values of array using iteration
+ *
+ * Given a reference to a List, along with a beginning index and an ending index,
+ * the function will return the sum of the values.
+ *
+ * @param list A reference to a List object which will be providing the data to sum.
+ * @param begin An integer for the beginning index of the list.
+ * @param end An integer for the ending index of the list.
+ *
+ * @returns int Returns the sum of the values in the List from the beginning
+ * index to the ending index that is passed into the function.
+ */
+int sumIterative(List& list, int begin, int end)
+{
+  int sum = 0;
+  for (int i = begin; i <= end; i++)
+  {
+    sum = sum + list[i];
+  }
+  return sum;
+}
