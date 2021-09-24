@@ -32,7 +32,7 @@ using namespace std;
 // you are to write for this assignment here.  The actual implementation
 // of your functions should be put into the corresponding [x.cpp]
 // source implementation file.
-
 int sumIterative(List& list, int begin, int end);
+int sumRecursive(List& list, int begin, int end);
 
 #endif // _LIBRECURSION_HPP_

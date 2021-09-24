@@ -30,7 +30,7 @@
 /** @brief Sum values of array using iteration
  *
  * Given a reference to a List, along with a beginning index and an ending index,
- * the function will return the sum of the values.
+ * the function will return the sum of the values using iteration.
  *
  * @param list A reference to a List object which will be providing the data to sum.
  * @param begin An integer for the beginning index of the list.
@@ -47,4 +47,31 @@ int sumIterative(List& list, int begin, int end)
     sum = sum + list[i];
   }
   return sum;
+}
+
+/** @brief Sum values of array using recursion.
+ *
+ * Given a reference to a List, along with a beginning index and an ending index,
+ * the function will return the sum of the values using recursion.
+ *
+ * @param list A reference to a List object which will be providing the data to sum.
+ * @param begin An integer for the beginning index of the list.
+ * @param end An integer for the ending index of the list.
+ *
+ * @returns int Returns the sum of the values in the List from the beginning
+ * index to the ending index that is passed into the function.
+ */
+int sumRecursive(List& list, int begin, int end)
+{
+  // base cases
+  if (begin > end)
+  {
+    return 0;
+  }
+  if (begin == end)
+  {
+    return list[begin];
+  }
+
+  return (list[begin] + sumRecursive(list, begin + 1, end));
 }
