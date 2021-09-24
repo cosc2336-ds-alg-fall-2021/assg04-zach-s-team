@@ -465,75 +465,73 @@ TEST_CASE("<isPalindromeIterative> function tests", "[task5]")
  * tests again and expect the same results, because both iterative or
  * recursive solutions should give the same answer for these tests.
  */
-/* Uncomment Task 6 test case to begin working on it.
-   TEST_CASE("<isPalindromeRecursive> function tests",
-    "[task6]")
-   {
-   // an empty list should be a palindrome
-   List l1;
-   CHECK( isPalindromeRecursive(l1, 0, -1) );
 
-   // a list of size 1 should be a trivial palindrome as well
-   int values2[] = {42};
-   List l2(1, values2);
-   CHECK( isPalindromeRecursive(l2, 0, 0) );
+TEST_CASE("<isPalindromeRecursive> function tests", "[task6]")
+{
+  // an empty list should be a palindrome
+  List l1;
+  CHECK(isPalindromeRecursive(l1, 0, -1));
 
-   // a list of size 2 is not a palindrome, unless the values are the same value
-   int values3[] = {1, 2};
-   List l3(2, values3);
-   CHECK_FALSE( isPalindromeRecursive(l3, 0, 1) );
-   l3[0] = 2;
-   CHECK( isPalindromeRecursive(l3, 0, 1) );
+  // a list of size 1 should be a trivial palindrome as well
+  int values2[] = {42};
+  List l2(1, values2);
+  CHECK(isPalindromeRecursive(l2, 0, 0));
 
-   // try a bigger list with an odd number of values (9)
-   int values4[] = {1, 2, 3, 4, 5, 4, 3, 2, 1};
-   List l4(9, values4);
-   CHECK( isPalindromeRecursive(l4, 0, 8) );
+  // a list of size 2 is not a palindrome, unless the values are the same value
+  int values3[] = {1, 2};
+  List l3(2, values3);
+  CHECK_FALSE(isPalindromeRecursive(l3, 0, 1));
+  l3[0] = 2;
+  CHECK(isPalindromeRecursive(l3, 0, 1));
 
-   // check some sublists are and are not palindromes
-   CHECK( isPalindromeRecursive(l4, 1, 7) );
-   CHECK( isPalindromeRecursive(l4, 2, 6) );
-   CHECK( isPalindromeRecursive(l4, 3, 5) );
-   CHECK( isPalindromeRecursive(l4, 4, 4) );
+  // try a bigger list with an odd number of values (9)
+  int values4[] = {1, 2, 3, 4, 5, 4, 3, 2, 1};
+  List l4(9, values4);
+  CHECK(isPalindromeRecursive(l4, 0, 8));
 
-   CHECK_FALSE( isPalindromeRecursive(l4, 0, 2) );
-   CHECK_FALSE( isPalindromeRecursive(l4, 6, 8) );
-   CHECK_FALSE( isPalindromeRecursive(l4, 4, 7) );
+  // check some sublists are and are not palindromes
+  CHECK(isPalindromeRecursive(l4, 1, 7));
+  CHECK(isPalindromeRecursive(l4, 2, 6));
+  CHECK(isPalindromeRecursive(l4, 3, 5));
+  CHECK(isPalindromeRecursive(l4, 4, 4));
 
-   // try a list with an even number of values (12)
-   int values5[] = {1, 2, 3, 4, 5, 6, 6, 5, 4, 3, 2, 1};
-   List l5(12, values5);
-   CHECK( isPalindromeRecursive(l5, 0, 11) );
+  CHECK_FALSE(isPalindromeRecursive(l4, 0, 2));
+  CHECK_FALSE(isPalindromeRecursive(l4, 6, 8));
+  CHECK_FALSE(isPalindromeRecursive(l4, 4, 7));
 
-   // check some sublists are and are not palindromes
-   CHECK( isPalindromeRecursive(l5, 1, 10) );
-   CHECK( isPalindromeRecursive(l5, 2, 9) );
-   CHECK( isPalindromeRecursive(l5, 3, 8) );
-   CHECK( isPalindromeRecursive(l5, 5, 6) );
+  // try a list with an even number of values (12)
+  int values5[] = {1, 2, 3, 4, 5, 6, 6, 5, 4, 3, 2, 1};
+  List l5(12, values5);
+  CHECK(isPalindromeRecursive(l5, 0, 11));
 
-   CHECK_FALSE( isPalindromeRecursive(l5, 0, 4) );
-   CHECK_FALSE( isPalindromeRecursive(l5, 7, 11) );
-   CHECK_FALSE( isPalindromeRecursive(l5, 4, 9) );
+  // check some sublists are and are not palindromes
+  CHECK(isPalindromeRecursive(l5, 1, 10));
+  CHECK(isPalindromeRecursive(l5, 2, 9));
+  CHECK(isPalindromeRecursive(l5, 3, 8));
+  CHECK(isPalindromeRecursive(l5, 5, 6));
 
-   // sublists of size 1 should all be palindromes
-   CHECK( isPalindromeRecursive(l5, 0, 0) );
-   CHECK( isPalindromeRecursive(l5, 11, 11) );
-   CHECK( isPalindromeRecursive(l5, 4, 4) );
-   CHECK( isPalindromeRecursive(l5, 7, 7) );
+  CHECK_FALSE(isPalindromeRecursive(l5, 0, 4));
+  CHECK_FALSE(isPalindromeRecursive(l5, 7, 11));
+  CHECK_FALSE(isPalindromeRecursive(l5, 4, 9));
 
-   // check bounds checking is working
-   CHECK_THROWS_AS( isPalindromeRecursive(l5, -1, 11), ListMemoryBoundsException);
-   CHECK_THROWS_AS( isPalindromeRecursive(l5, 0, 12), ListMemoryBoundsException);
+  // sublists of size 1 should all be palindromes
+  CHECK(isPalindromeRecursive(l5, 0, 0));
+  CHECK(isPalindromeRecursive(l5, 11, 11));
+  CHECK(isPalindromeRecursive(l5, 4, 4));
+  CHECK(isPalindromeRecursive(l5, 7, 7));
 
-   // issue #x, make sure isPalindrome() is not just checking the first and last
-   // indexes only, an even list
-   int values6[] = {1, 2, 3, 1};
-   List l6(4, values6);
-   CHECK_FALSE(isPalindromeRecursive(l6, 0, 3));
+  // check bounds checking is working
+  CHECK_THROWS_AS(isPalindromeRecursive(l5, -1, 11), ListMemoryBoundsException);
+  CHECK_THROWS_AS(isPalindromeRecursive(l5, 0, 12), ListMemoryBoundsException);
 
-   // an odd sized list
-   int values7[] = {1, 2, 3, 4, 1};
-   List l7(5, values7);
-   CHECK_FALSE(isPalindromeRecursive(l7, 0, 4));
-   }
- */
+  // issue #x, make sure isPalindrome() is not just checking the first and last
+  // indexes only, an even list
+  int values6[] = {1, 2, 3, 1};
+  List l6(4, values6);
+  CHECK_FALSE(isPalindromeRecursive(l6, 0, 3));
+
+  // an odd sized list
+  int values7[] = {1, 2, 3, 4, 1};
+  List l7(5, values7);
+  CHECK_FALSE(isPalindromeRecursive(l7, 0, 4));
+}

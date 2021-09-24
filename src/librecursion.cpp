@@ -142,3 +142,29 @@ bool isPalindromeIterative(List& list, int begin, int end)
   }
   return false;
 }
+
+/** @brief Palindrome checker using recursion
+ *
+ * Given a reference to a List, along with a beginning index and an ending index,
+ * the recursive function will return a boolean if the list is a palindrome
+ *
+ * @param list A reference to a List object which will be providing the data to check.
+ * @param begin An integer for the beginning index of the list.
+ * @param end An integer for the ending index of the list.
+ *
+ * @returns bool Returns true or false if the list is palindrome or not.
+ */
+bool isPalindromeRecursive(List& list, int begin, int end)
+{
+  // base cases
+  if (end - begin < 1)
+  {
+    return true;
+  }
+  // general cases
+  if (list[begin] != list[end])
+  {
+    return false;
+  }
+  return isPalindromeRecursive(list, begin + 1, end - 1);
+}
