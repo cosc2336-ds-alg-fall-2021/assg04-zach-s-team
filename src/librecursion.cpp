@@ -120,3 +120,25 @@ void reverseRecursive(List& list, int begin, int end)
   swap(list[begin], list[end]);
   reverseRecursive(list, begin + 1, end - 1);
 }
+
+/** @brief Palindrome checker using iteration
+ *
+ * Given a reference to a List, along with a beginning index and an ending index,
+ * the iterative function will return a boolean if the list is a palindrome
+ *
+ * @param list A reference to a List object which will be providing the data to check.
+ * @param begin An integer for the beginning index of the list.
+ * @param end An integer for the ending index of the list.
+ *
+ * @returns bool Returns true or false if the list is palindrome or not.
+ */
+bool isPalindromeIterative(List& list, int begin, int end)
+{
+  List newList = list;
+  reverseIterative(newList, begin, end);
+  if (newList == list)
+  {
+    return true;
+  }
+  return false;
+}
