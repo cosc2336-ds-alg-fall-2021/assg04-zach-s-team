@@ -79,7 +79,7 @@ int sumRecursive(List& list, int begin, int end)
 /** @brief Reverses the value in an array using iteration.
  *
  * Given a reference to a List, along with a beginning index and an ending index,
- * the function will reverse the order of the list.
+ * the function will reverse the order of the list using iteration.
  *
  * @param list A reference to a List object which will be providing the data to reverse.
  * @param begin An integer for the beginning index of the list.
@@ -95,4 +95,28 @@ void reverseIterative(List& list, int begin, int end)
       end--;
     }
   }
+}
+
+/** @brief Reverses the value in an array using recursion.
+ *
+ * Given a reference to a List, along with a beginning index and an ending index,
+ * the function will reverse the order of the list using recursion.
+ *
+ * @param list A reference to a List object which will be providing the data to reverse.
+ * @param begin An integer for the beginning index of the list.
+ * @param end An integer for the ending index of the list.
+ */
+void reverseRecursive(List& list, int begin, int end)
+{
+  // base cases
+  if (begin > end)
+  {
+    return;
+  }
+  if (begin == end)
+  {
+    return;
+  }
+  swap(list[begin], list[end]);
+  reverseRecursive(list, begin + 1, end - 1);
 }
